@@ -8,6 +8,25 @@ Template.package.events({
   "keyup #code" : suggestExports
 });
 
+Template.kitchen.events({
+  "click .download" : zipPackage,
+  "click .saveToApp" : function (e) {
+    Meteor.promise(
+      "deanius:package-kitchen#saveToApp",
+      packageModel.fullPackageName, packageModel.allFilesRendered
+    ).then(
+      function(){ alert("Your package has been created. App will now reload.") },
+      function(err){ alert(err.reason); }
+    );
+  }
+});
+
+Template.allFiles.helpers({
+  "isMarkdown" : function () {
+    return this.path.match(/\.md$/);
+  }
+});
+
 Template.package.onRendered(function () {
   $("[name=atmosphereName]").val(SessionAmplify.get("atmosphereName"));
   $("[name=githubName]").val(SessionAmplify.get("githubName"));
@@ -16,17 +35,8 @@ Template.package.onRendered(function () {
   $("[name=demoUrl]").val(SessionAmplify.get("demoUrl"));
   $("[name=code]").val(SessionAmplify.get("code") || packageModel.code);
   $("[name=export]").val(SessionAmplify.get("export") || packageModel.export);
-});
 
-Template.allFiles.events({
-  "click .download" : function (e) {
-    zipPackage()
-  }
-});
-Template.allFiles.helpers({
-  "isMarkdown" : function () {
-    return this.path.match(/\.md$/);
-  }
+  _updatePackage();
 });
 
 function _updatePackage () {
@@ -37,6 +47,7 @@ function _updatePackage () {
     SessionAmplify.set("demoUrl", $("[name=demoUrl]").val());
     SessionAmplify.set("summary", $("[name=summary]").val());
     SessionAmplify.set("code", $("[name=code]").val());
+    SessionAmplify.set("export", $("[name=export]").val());
   });
 
   packageModel.atmosphereName = $("[name=atmosphereName]").val();
@@ -57,7 +68,5 @@ function suggestExports (e) {
     $("[name=export]").val("");
     return;
   }
-  //if (!$("[name=export]").val()) {
   $("[name=export]").val(packageModel.exportSuggestion);
-  //}
 }
