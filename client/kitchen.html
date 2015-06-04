@@ -1,20 +1,33 @@
 <!-- xxx maybe we shouldn't take over the meta tag, except for our route ? -->
 <head>
   <meta name="viewport" content="width=device-width">
-  <title>Make a Meteor Package With Ease &copy;deanius 2015</title>
+  <title>Big Bang: Create a package with a single explosion!</title>
 </head>
 <template name="kitchen">
-  <div class="container-fluid">
+  <!--<div class="container">-->
+  <div style="margin: 2rem;">
+    <h1 class="center-align white-text">Big Bang!</h1>
     <div class="row">
-      {{> package }}
-      <div id="source">
-        <hr>
-        <button type="button" class="btn btn-primary download">Download Package (ZIP)</button>
-        <button type="button" class="btn btn-primary saveToApp">Save Package to App</button>
+      <div class="s12 m3 col">
+        {{> who_are_you}}
+        {{> testing_framework}}
+        {{> dependencies}}
+        {{> usage}}
+      </div>
 
+      <div class="s12 m4 col">
+        {{> description }}
+        {{> code_options}}
+      </div>
+      <div id="source" class="s12 m5 col">
         {{> allFiles }}
       </div>
     </div>
+  </div>
+  <div class="fixed-action-btn" style="bottom: 2rem; right: 2rem;">
+    <a class="btn-floating btn-large waves-effect waves-light teal">
+      <i class="mdi-file-file-download"></i>
+    </a>
   </div>
   {{> flair }}
 </template>

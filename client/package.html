@@ -1,95 +1,79 @@
-<template name="package">
-  <style media="screen">
-  body{ padding-left: 10px; background-color: #dde}
-  .file { border: 1px solid #444; margin-bottom: 15px; background-color: #eee;}
-  .markdown { background-color: white;}
-  .packageDef input[type=text] { width: 300px; }
-  .packageDef input[type=radio] { width: 30px; }
-  </style>
-  <div class="packageDef col-md-6">
+<template name="description">
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title black-text">Package description</span>
 
-  <h3>Let's cook up a package!</h3>
+      <div class="row">
 
-  <p>
-    You've got the code in mind you want to package, right?
-    OK, hold your horses, we'll have you ready in just a second.
-    Let us guide you through the basic questions, and watch your
-    package get written Meteor-style.
-    <br>
-    When you're done:
-    <ol>
-      <li>Download it as a zip</li>
-      <li>Unzip it to the <code>packages/</code> dir of an app</li>
-      <li><code>meteor add you:your-package</code></li>
-    </ol>
-  </p>
+        <div class="input-field col s12">
+          <i class="mdi-action-translate prefix"></i>
+          <input type="text" id="packageName" name="packageName" value="" autocapitalize="off" autocorrect="off">
 
-  <form action="#">
-    On Atmosphere, you are:<br>
-    <input type="text" name="atmosphereName" value=""
-      autocapitalize="off" autocorrect="off"
-      placeholder="Your Meteor Developer Account name">
+          <label for="packageName">Package name</label>
+          <div class="input-prefixed-comment">
+            [a-z0-9_]+
+          </div>
+        </div>
 
-    <br>
-    On GitHub, you are:<br>
-    <input type="text" name="githubName" value=""
-      autocapitalize="off" autocorrect="off"
-      placeholder="Your Github account name">
+        <div class="input-field col s12">
+          <i class="mdi-action-description prefix"></i>
+          <input type="text" id="summary" name="summary" value="" autocapitalize="off" autocorrect="off" length="140">
 
-    <br>
-    What will you name this new-fangled thing?<br>
-    <input type="text" name="packageName"
-      autocapitalize="off" autocorrect="off"
-      placeholder="new-thing">
+          <label for="summary">Summary</label>
+          <div class="input-prefixed-comment">
+            Briefly describe what your package offers
+          </div>
+        </div>
 
-    <br>
-    What will it do for users who install it?<br>
-    <input type="text" name="summary" placeholder="Keep it to 1 sentence">
+        <div class="input-field col s12">
+          <i class="mdi-content-link prefix"></i>
+          <div style="margin-left: 50px;">
+            <h6>Demo website</h6>
+            <div class="row">
+              <div class="s12 m4 col input-field"  style="padding-left: 0">
+                <input type="radio" name="demoUrl_type" id="demoUrl_meteor" value="meteor" checked>
+                <label for="demoUrl_meteor">Meteor hosted</label>
+              </div>
+              <div class="s12 m8 col">
+                http://
+                <div class="inline-block input-field">
+                  <input type="text"
+                         id="demoUrl_meteorSubdomain"
+                         name="demoUrl_meteorSubdomain"
+                         value=""
+                         autocapitalize="off"
+                         autocorrect="off"
+                         style="width: 10em">
+                  <label for="demoUrl_meteorSubdomain">subdomain</label>
+                </div>
+                .meteor.com/
+              </div>
+            </div>
+            <div class="row">
+              <div class="s12 m4 col input-field"  style="padding-left: 0">
+                <input type="radio" name="demoUrl_type" id="demoUrl_custom" value="custom">
+                <label for="demoUrl_custom">Custom</label>
+              </div>
+              <div class="s12 m8 col">
+                <div class="inline-block input-field">
+                  <input type="url"
+                         id="demoUrl_customUrl"
+                         name="demoUrl_customUrl"
+                         value=""
+                         autocapitalize="off"
+                         autocorrect="off">
+                  <label for="demoUrl_customUrl">URL</label>
+                </div>
+              </div>
+            </div>
 
-    <br>
-    Will it have a demo site?<br>
-    <input type="text" name="demoUrl"
-      autocapitalize="off" autocorrect="off"
-      placeholder="http://somewhere.meteor.com">
-
-    <br>
-    <br>
-    Does this package enhance the client, server, or is it a shared package? <br>
-    <label for="packageType1">Shared</label>
-    <input type="radio" name="packageType" id="packageType1" value="shared" checked="1">
-    <label for="packageType2">Client</label>
-    <input type="radio" name="packageType" id="packageType2" value="client">
-    <label for="packageType3">Server</label>
-    <input type="radio" name="packageType" id="packageType3" value="server">
-
-    <!--
-    <br>
-    How are you with people knowing about this ? <br>
-    <label for="privacy1">Share : Share with the people!</label>
-    <input type="radio" name="privacy" id="privacy1" value="1" checked="1"><br>
-    <label for="privacy2">Private : Keep it on the DL <i>(Sssshh)</i></label>
-    <input type="radio" name="privacy" id="privacy2" value="0"><br>
--->
-    <br>
-    What code do you want this package to include ?<br>
-    <textarea id="code" name="code" rows="10" cols="72"
-      autocapitalize="off" autocorrect="off"
-      placeholder=""></textarea>
-
-    <br>
-    Does it export any vars to the global scope?<br>
-    <input type="text" name="export" value=""
-      autocapitalize="off" autocorrect="off"><br>
-
-    <br>
-    Testing Strategy?<br>
-    <label for="test1">TinyTest : kickin' it old school</label>
-    <input type="radio" name="testFramework" id="test1" value="tinytest" checked="1"><br>
-    <label for="test2">Mocha : describe it 'awesome' </label>
-    <input type="radio" name="testFramework" id="test2" value="mocha"><br>
-    <label for="test3">None : <i>"Danger"</i> is my middle name. </label>
-    <input type="radio" name="testFramework" id="test3" value=""><br>
-
-  </form>
-</div>
+            <div>
+              <input type="radio" name="demoUrl_type" id="demoUrl_none" value="none" checked>
+              <label for="demoUrl_none">None</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

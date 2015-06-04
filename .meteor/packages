@@ -3,10 +3,14 @@
 meteor-platform
 iron:router
 
-# the package generator, exposed at /kitchen
+# the package generator
 deanius:package-kitchen
 
 # utilities
 
 # uncategorized
-twbs:bootstrap
+materialize:materialize
+fourseven:scss
+coffeescript
+
+npm-container
