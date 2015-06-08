@@ -21,10 +21,10 @@ Package.onUse(function(api) {
   api.imply("perak:markdown@1.0.4");
 
   // api.addFiles("server/methods.js", ["server"]);
-  api.export("MeteorPackage", "client");
+  api.export("PackageKitchen", "client");
   api.addFiles("client/jszip.js", ["client"]);
   api.addFiles("client/zip.coffee", ["client"]);
   api.addFiles("client/packageModel.coffee", ["client"]);
 
-  api.export("MeteorPackage", "client");
+  api.export("PackageKitchen", "client");
 });

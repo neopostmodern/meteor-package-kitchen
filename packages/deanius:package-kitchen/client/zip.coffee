@@ -1,7 +1,7 @@
 zipPackage = ->
   zip = new JSZip()
 
-  MeteorPackage.allFilesRendered.forEach((file) ->
+  PackageKitchen.allFilesRendered.forEach((file) ->
     zip.file(file.path, file.contents);
   )
 

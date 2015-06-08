@@ -1,28 +1,38 @@
-<!-- xxx maybe we shouldn't take over the meta tag, except for our route ? -->
 <head>
   <meta name="viewport" content="width=device-width">
   <title>Big Bang: Create a package with a single explosion!</title>
 </head>
 <template name="kitchen">
+  <div id="background"></div>
   <!--<div class="container">-->
   <div style="margin: 2rem;">
-    <h1 class="center-align white-text">Big Bang!</h1>
-    <div class="row">
-      <div class="s12 m3 col">
-        {{> who_are_you}}
-        {{> testing_framework}}
-        {{> dependencies}}
-        {{> usage}}
+    <h1 id="title" class="center-align white-text">Big Bang!</h1>
+    {{#with kitchenPackage}}
+      <div class="row">
+        <div class="s12 m7 col">
+          <div class="row">
+            <div class="s12 m5 col">
+              {{> who_are_you}}
+              {{> code_options}}
+            </div>
+            <div class="s12 m7 col">
+              {{> description }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="s12 m7 col">
+              {{> dependencies}}
+            </div>
+            <div class="s12 m5 col">
+              {{> testing}}
+            </div>
+          </div>
+        </div>
+        <div id="source" class="s12 m5 col">
+          {{> allFiles }}
+        </div>
       </div>
-
-      <div class="s12 m4 col">
-        {{> description }}
-        {{> code_options}}
-      </div>
-      <div id="source" class="s12 m5 col">
-        {{> allFiles }}
-      </div>
-    </div>
+    {{/with}}
   </div>
   <div class="fixed-action-btn" style="bottom: 2rem; right: 2rem;">
     <a class="btn-floating btn-large waves-effect waves-light teal">

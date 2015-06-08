@@ -1,13 +1,14 @@
-<template name="testing_framework">
+<template name="testing">
   <div class="card">
     <div class="card-content">
-      <span class="card-title black-text">Testing framework</span>
+      <span class="card-title black-text">Testing</span>
+      <h6>Framework</h6>
       <div>
         <input type="radio" name="testFramework" id="tinytest" value="tinytest" checked>
         <label for="tinytest">TinyTest (standard)</label>
       </div>
       <div>
-        <input type="radio" name="testFramework" id="tinytest" value="tinytest">
+        <input type="radio" name="testFramework" id="tinytest" value="tinytest" disabled>
         <label for="tinytest">MUnit (extended TinyTest)</label>
       </div>
       <div>
@@ -17,6 +18,14 @@
       <div>
         <input type="radio" name="testFramework" id="none" value="none">
         <label for="none">None (deprecated)</label>
+      </div>
+
+      <h6>Travis CI</h6>
+      <div class="switch">
+        <label>
+          <input type="checkbox" id="travis" checked>
+          <span class="lever"></span>
+        </label>
       </div>
     </div>
   </div>

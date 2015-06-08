@@ -15,11 +15,11 @@
             <label for="dialect-javascript">Plain JavaScript</label>
           </div>
           <div>
-            <input type="radio" name="dialect" id="dialect-ecma6" value="ecma6">
+            <input type="radio" name="dialect" id="dialect-ecma6" value="ecma6" disabled>
             <label for="dialect-ecma6">ECMA 6</label>
           </div>
           <div>
-            <input type="radio" name="dialect" id="dialect-coffee" value="server">
+            <input type="radio" name="dialect" id="dialect-coffee" value="coffeescript">
             <label for="dialect-coffee">CoffeeScript</label>
           </div>
         </div>
@@ -31,16 +31,16 @@
         </div>
         <div class="col s12 m8">
           <div>
-            <input type="radio" name="packageType" id="packageType1" value="shared" checked="1">
-            <label for="packageType1">Shared</label>
+            <input type="radio" name="scope" id="scope-shared" value="shared" checked="1">
+            <label for="scope-shared">Shared</label>
           </div>
           <div>
-            <input type="radio" name="packageType" id="packageType2" value="client">
-            <label for="packageType2">Client</label>
+            <input type="radio" name="scope" id="scope-client" value="client">
+            <label for="scope-client">Client</label>
           </div>
           <div>
-            <input type="radio" name="packageType" id="packageType3" value="server">
-            <label for="packageType3">Server</label>
+            <input type="radio" name="scope" id="scope-server" value="server">
+            <label for="scope-server">Server</label>
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@
           Exports
         </div>
         <div class="col s12 m8 input-field">
-          <input type="text" name="export" value="" autocapitalize="off" autocorrect="off"><br>
+          <input type="text" name="exports" value="" autocapitalize="off" autocorrect="off"><br>
         </div>
       </div>
     </div>

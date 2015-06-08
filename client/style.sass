@@ -1,5 +1,27 @@
-body
+@font-face
+  font-family: 'Komika Title'
+  src: url('fonts/KomikaTitle-webfont.eot')
+  src: url('fonts/KomikaTitle-webfont.eot?#iefix') format('embedded-opentype'),
+  url('fonts/KomikaTitle-webfont.woff') format('woff'),
+  url('fonts/KomikaTitle-webfont.ttf') format('truetype'),
+  url('fonts/KomikaTitle-webfont.svg#komika_titleregular') format('svg')
+  font-weight: normal
+  font-style: normal
+
+#background
+  top: 0
+  left: -50%
+  height: 300%
+  width: 300%
+  position: fixed
+  z-index: -1
+
   background-image: url(pattern.jpg)
+  transform: rotate(20deg)
+
+h1#title
+  font-family: 'Komika Title', sans-serif
+  font-size: 800%
 
 .input-prefixed-comment
   margin-left: 45px
